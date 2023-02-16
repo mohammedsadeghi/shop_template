@@ -4,7 +4,10 @@ import './product_create.dart';
 import './product_list.dart';
 
 class ProductsAdminPage extends StatelessWidget {
-  const ProductsAdminPage({super.key});
+  final Function addProduct;
+  final Function deleteProduct;
+
+  ProductsAdminPage(this.addProduct, this.deleteProduct);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,10 @@ class ProductsAdminPage extends StatelessWidget {
             children: <Widget>[
               AppBar(
                 automaticallyImplyLeading: false,
-                title: const Text('Choose'),
+                title: Text('Choose'),
               ),
               ListTile(
-                title: const Text('All Products'),
+                title: Text('All Products'),
                 onTap: () {
                   Navigator.pushReplacementNamed(context, '/');
                 },
@@ -28,8 +31,8 @@ class ProductsAdminPage extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const Text('Manage Products'),
-          bottom: const TabBar(
+          title: Text('Manage Products'),
+          bottom: TabBar(
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.create),
@@ -43,7 +46,7 @@ class ProductsAdminPage extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          children: <Widget>[const ProductCreatePage(), ProductListPage()],
+          children: <Widget>[ProductCreatePage(addProduct), ProductListPage()],
         ),
       ),
     );

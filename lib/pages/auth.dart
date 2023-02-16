@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './products.dart';
+
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 

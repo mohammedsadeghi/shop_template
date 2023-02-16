@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import './pages/product.dart';
-
 class Products extends StatelessWidget {
-  final List<Map<String, String>> products;
-  final Function deleteProduct;
+  final List<Map<String, dynamic>> products;
 
-  Products(this.products, {super.key, required this.deleteProduct}) {
+  Products(this.products, {super.key}) {
     print('[Products Widget] Constructor');
   }
 
@@ -16,21 +13,6 @@ class Products extends StatelessWidget {
         children: <Widget>[
           Image.asset(products[index]['image']!),
           Text(products[index]['title']!),
-          ButtonBar(
-            alignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextButton(
-                child: const Text('Details'),
-                onPressed: () =>
-                    Navigator.pushNamed<bool>(context, '/product/$index')
-                        .then((value) {
-                  if (value!) {
-                    deleteProduct(index);
-                  }
-                }),
-              )
-            ],
-          )
         ],
       ),
     );
@@ -38,7 +20,7 @@ class Products extends StatelessWidget {
 
   Widget _buildProductList() {
     Widget productCards;
-    if (products.length > 0) {
+    if (products.isNotEmpty) {
       productCards = ListView.builder(
         itemBuilder: _buildProductItem,
         itemCount: products.length,

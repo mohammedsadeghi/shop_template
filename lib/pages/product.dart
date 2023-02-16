@@ -51,7 +51,7 @@ class ProductPage extends StatelessWidget {
           children: <Widget>[
             Image.asset(imageUrl),
             Container(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10.0),
               child: Text(title),
             ),
             Container(
